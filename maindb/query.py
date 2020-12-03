@@ -1,9 +1,10 @@
 import numpy as np
 from PIL import Image
 import hashlib
+import json
+import os
 
-path = "/static/img"
-
+path = "/static/imgs/"
 
 def get_pil_array(img_arr, res=32):
     img = np.array(img_arr)
@@ -20,7 +21,7 @@ def main_predict(img_content, img_style):
     return outfns
 
 def save_img(img):
-    outfn = md5({'fingerprint': img[:,0,0]}) + '.png'
+    outfn = path+md5({'fingerprint': img[:,0,0]}) + '.png'
     im = Image.fromarray(img)
     im.save(outfn)
 
