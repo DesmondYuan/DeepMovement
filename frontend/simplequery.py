@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import sys
 import requests
+from PIL import Image
 
 
 app = Flask(__name__)
@@ -14,9 +15,11 @@ def mainm():
         style_img_fn = request.form["style_img_fn"]
         content_img_fn = request.form["content_img_fn"]
         print("[simplequery.py] Request texts parsed...")
-        
+
         style_img = request.files["style_img"]
+        style_img = Image.open(style_img)
         content_img = request.files["content_img"]
+        content_img = Image.open(content_img)
         print("[simplequery.py] Request files parsed...")
 
         # send this data id to maindb.py
