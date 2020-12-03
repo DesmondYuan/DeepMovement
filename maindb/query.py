@@ -1,5 +1,6 @@
 import numpy as np
 from PIL import Image
+import hashlib
 
 path = "/static/img"
 
@@ -15,4 +16,16 @@ def main_predict(img_content, img_style):
     # placeholder function for Magenta
     img1 = get_pil_array(img_content)
     img2 = get_pil_array(img_style)
-    return img1, img2
+    output = (img1+img2)/2
+    outfns = save_img(img1), save_img(img2), save_img(output)
+    return outfns
+
+def save_img(img):
+    outfn = md5({'fingerprint': img[:,0,0]}) + '.png'
+    im = Image.fromarray(img)
+    im.save(outfn)
+
+
+def md5(obj):
+    key = json.dumps(vars(obj), sort_keys=True)
+    return hashlib.md5(key.encode()).hexdigest()

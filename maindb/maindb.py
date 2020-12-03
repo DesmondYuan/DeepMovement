@@ -11,12 +11,14 @@ def mainm():
     if request.method == "POST":
         print("[maindb.py] Request received...")
         inputs = request.json
-        img = main_predict(inputs["style_img"], inputs["content_img"])
+        outfns = main_predict(inputs["style_img"], inputs["content_img"])
         print("[maindb.py] Modle output received...")
 
         return render_template(
             "display.html",
-            style_img=img
+            style_img=outfns[0],
+            content_img=outfns[1],
+            output_img=outfn[2]
         )
     else:
         return "maindb.py - This is get method - try using post -- "
