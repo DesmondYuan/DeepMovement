@@ -18,7 +18,7 @@ def mainm():
             "display.html",
             style_img=outfns[0],
             content_img=outfns[1],
-            output_img=outfn[2]
+            output_img=outfns[2]
         )
     else:
         return "maindb.py - This is get method - try using post -- "
