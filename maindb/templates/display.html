@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> ArtSearch - The New Normal </title>
+</head>
+
+<body>
+    <h1>ArtSearch - AC295</h1>
+    Developed by team <b><i>The New Normal</i> (Debbie Liske, Bo Yuan, Fahd Jadoon)</b> <br><br>
+
+    <h3>Below is the input information. </h3>
+    {% for table in metadata %}
+    {{ table|safe }}
+    {% endfor %}
+    <br><br>
+    <table border="1" >
+        <tr><th> Input image </th></tr>
+        <tr><td> {{art_image}} </th></td>
+    <tr>
+        <td style="width:250px; height:250px; background-color:rgba(146, 147, 151, 0.24);text-align:center;
+            vertical-align:middle">
+            <img src="{{url_for('static', filename=art_image)}}" style="max-height:100%; max-width:100%" />
+    </tr>
+    </table>
+    <br><br>
+
+    <h3>Below is the most similar pictures. </h3>
+
+    Below it the most similar pictures based on 4 different distance functions. <br>
+    <table border="1" >
+        <tr>
+            <th> Distance methods </th>
+            <td> Distance 1: <br> Google Vision API features </td>
+            <td> Distance 2: <br> Cosine distance on dominant colors </td>
+            <td> Distance 3: <br> Cosine distance on raw img with pooling </td>
+            <td> Distance 4: <br> Euclidean distance on raw img with pooling </td>
+        </tr>
+        <tr>
+            <th> Image </th>
+            <td style="width:250px; height:250px; background-color:rgb(253, 250, 250);text-align:center;
+                            vertical-align:middle">
+                <img src="{{url_for('static', filename=match1)}}" style="max-height:100%; max-width:100%" />
+            </td>
+            <td style="width:250px; height:250px; background-color:rgb(253, 250, 250);text-align:center;
+                            vertical-align:middle">
+                <img src="{{url_for('static', filename=match2)}}" style="max-height:100%; max-width:100%" />
+            </td>
+            <td style="width:250px; height:250px; background-color:rgb(253, 250, 250);text-align:center;
+                            vertical-align:middle">
+                <img src="{{url_for('static', filename=match3)}}" style="max-height:100%; max-width:100%" />
+            </td>
+            <td style="width:250px; height:250px; background-color:rgb(253, 250, 250);text-align:center;
+                            vertical-align:middle">
+                <img src="{{url_for('static', filename=match4)}}" style="max-height:100%; max-width:100%" />
+            </td>
+        </tr>
+        <tr>
+            <th> Score </th>
+            <td> {{score1}} </td>
+            <td> {{score2}} </td>
+            <td> {{score3}} </td>
+            <td> {{score4}} </td>
+        </tr>
+        <tr>
+            <th> Filename </th>
+            <td> {{match1}} </td>
+            <td> {{match2}} </td>
+            <td> {{match3}} </td>
+            <td> {{match4}} </td>
+        </tr>
+    </table>
+
+    <br>Thanks for using our art search engine! <br>
+    <br>Developed by team The New Normal.
+    <br>Debbie Liske, Bo Yuan, Fahd Jadoon. <br>
+
+    <!-- <p>Nearest images: {{ nearest_images }} </p></br>
+    <p>Feature barcode from Google Vision API: {{ google_features }} </p></br>
+    <p>Dominant colors from Google Vision API {{ dominant_colors }} </p></br> -->
+
+</body>
+
+</html>
