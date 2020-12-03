@@ -10,9 +10,11 @@ def mainm():
     print("[simplequery.py] mainm() being called...")
     if request.method == "POST":  # User clicked submit button
         print("[simplequery.py] Request received...")
+
         style_img_fn = request.form["style_img_fn"]
         content_img_fn = request.form["content_img_fn"]
         print("[simplequery.py] Request texts parsed...")
+        
         style_img = request.files["style_img"]
         content_img = request.files["content_img"]
         print("[simplequery.py] Request files parsed...")
