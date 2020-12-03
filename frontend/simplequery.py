@@ -8,9 +8,9 @@ app = Flask(__name__)
 
 def get_img_array(request, img_key):
     img = request.files[img_key]
-    img = Image.open(img)
+    img = Image.open(img).convert('RGB')
     img_arr = np.array(img.getdata())
-    img_arr = img_arr.reshape(img.size[0], img.size[1], 4).tolist()
+    img_arr = img_arr.reshape(img.size[0], img.size[1], 3).tolist()
     return img_arr
 
 @app.route("/", methods=["POST", "GET"])

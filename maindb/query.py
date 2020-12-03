@@ -21,8 +21,9 @@ def main_predict(img_content, img_style):
     return outfns
 
 def save_img(img):
-    outfn = path+md5({'fingerprint': img[:,0,0].tolist()}) + '.png'
-    im = Image.fromarray(img)
+    img = img.astype(int)
+    outfn = path+md5({'fingerprint': np.diag(img[:,:,0]).tolist()}) + '.jpg'
+    im = Image.fromarray(img, mode='RGB')
     im.save(outfn)
 
 
