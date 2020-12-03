@@ -19,8 +19,8 @@ def mainm():
         # send this data id to maindb.py
         print("[simplequery.py] Downstream request being made...")
         resp = requests.post(url=db_url, json={
-            "style_img_fn" = style_img_fn,
-            "content_img_fn" = content_img_fn,
+            "style_img_fn" : style_img_fn,
+            "content_img_fn" : content_img_fn,
             "style_img" : style_img,
             "content_img" : content_img
         })
