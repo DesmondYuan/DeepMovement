@@ -20,7 +20,7 @@ def mainm():
         style_img = np.array(Image.open(style_img).getdata()).tolist()
         content_img = request.files["content_img"]
         content_img = np.array(Image.open(content_img).getdata()).tolist()
-        assert len(np.array(style_img).shape) == 2
+        assert len(np.array(style_img).shape) == 2, len(np.array(style_img).shape)
         print("[simplequery.py] Request files parsed...")
 
         # send this data id to maindb.py
