@@ -27,5 +27,5 @@ def save_img(img):
 
 
 def md5(obj):
-    key = json.dumps(vars(obj), sort_keys=True)
+    key = json.dumps(obj, sort_keys=True)
     return hashlib.md5(key.encode()).hexdigest()
