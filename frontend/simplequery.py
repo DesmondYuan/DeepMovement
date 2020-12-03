@@ -6,6 +6,12 @@ import numpy as np
 
 app = Flask(__name__)
 
+def get_img_array(request, img_key):
+    img = request.files[img_key]
+    img_arr = np.array(Image.open(img).getdata())
+    img_arr = img_arr.reshape(img.size[0], img.size[1]).tolist()
+    return img_arr
+
 @app.route("/", methods=["POST", "GET"])
 def mainm():
     print("[simplequery.py] mainm() being called...")
@@ -16,11 +22,8 @@ def mainm():
         content_img_fn = request.form["content_img_fn"]
         print("[simplequery.py] Request texts parsed...")
 
-        style_img = request.files["style_img"]
-        style_img = np.array(Image.open(style_img).getdata()).tolist()
-        content_img = request.files["content_img"]
-        content_img = np.array(Image.open(content_img).getdata()).tolist()
-        assert len(np.array(style_img).shape) == 2, len(np.array(style_img).shape)
+        style_img = get_img_array(request, "style_img")
+        content_img = get_img_array(request, "content_img")
         print("[simplequery.py] Request files parsed...")
 
         # send this data id to maindb.py

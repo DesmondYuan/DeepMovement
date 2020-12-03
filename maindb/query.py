@@ -6,8 +6,7 @@ path = "/static/img"
 
 def get_pil_array(img_arr, res=32):
     img = np.array(img_arr)
-    assert len(img.shape) == 2, img.shape
-
+    assert False, img.shape
     img = img.reshape(img.shape[0], img.shape[1], 3)
     return img
 
