@@ -11,7 +11,7 @@ def mainm():
     if request.method == "POST":
         print("[maindb.py] Request received...")
         inputs = request.json
-        img = main_predict(inputs["style_img_fn"], inputs["content_img_fn"])
+        img = main_predict(inputs["style_img"], inputs["content_img"])
         print("[maindb.py] Modle output received...")
 
         return render_template(
