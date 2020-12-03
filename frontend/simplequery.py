@@ -8,7 +8,8 @@ app = Flask(__name__)
 
 def get_img_array(request, img_key):
     img = request.files[img_key]
-    img_arr = np.array(Image.open(img).getdata())
+    img = Image.open(img)
+    img_arr = np.array(img.getdata())
     img_arr = img_arr.reshape(img.size[0], img.size[1]).tolist()
     return img_arr
 
