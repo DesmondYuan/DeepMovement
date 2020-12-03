@@ -16,6 +16,7 @@ def main_predict(img_content, img_style):
     # placeholder function for Magenta
     img1 = get_pil_array(img_content)
     img2 = get_pil_array(img_style)
+    img2 = img2[:img1.shape[0], :img1.shape[1], :img1.shape[2]]
     output = (img1+img2)/2
     outfns = save_img(img1), save_img(img2), save_img(output)
     return outfns
