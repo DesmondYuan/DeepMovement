@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=["POST", "GET"])
 def mainm():
+    print("[simplequery.py] mainm() being called...")
     if request.method == "POST":  # User clicked submit button
         print("[simplequery.py] Request received...")
         style_img_fn = request.form["style_img_fn"]
