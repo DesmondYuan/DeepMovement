@@ -17,9 +17,9 @@ def mainm():
         print("[simplequery.py] Request texts parsed...")
 
         style_img = request.files["style_img"]
-        style_img = np.array(Image.open(style_img).getdata())
+        style_img = np.array(Image.open(style_img).getdata()).tolist()
         content_img = request.files["content_img"]
-        content_img = np.array(Image.open(content_img).getdata())
+        content_img = np.array(Image.open(content_img).getdata()).tolist()
         print("[simplequery.py] Request files parsed...")
 
         # send this data id to maindb.py
