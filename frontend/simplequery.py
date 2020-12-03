@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import sys
 import requests
 from PIL import Image
-
+import numpy as np
 
 app = Flask(__name__)
 
@@ -17,9 +17,9 @@ def mainm():
         print("[simplequery.py] Request texts parsed...")
 
         style_img = request.files["style_img"]
-        style_img = Image.open(style_img)
+        style_img = np.array(Image.open(style_img).getdata())
         content_img = request.files["content_img"]
-        content_img = Image.open(content_img)
+        content_img = np.array(Image.open(content_img).getdata())
         print("[simplequery.py] Request files parsed...")
 
         # send this data id to maindb.py
