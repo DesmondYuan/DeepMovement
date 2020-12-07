@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import pandas as pd
 import os
-from query import main_predict
+from query import magenta_predict, Magenta_Model
 
 
 app = Flask(__name__)
@@ -11,7 +11,7 @@ def mainm():
     if request.method == "POST":
         print("[maindb.py] Request received...")
         inputs = request.json
-        outfns = main_predict(inputs["style_img"], inputs["content_img"])
+        outfns = magenta_predict(magenta_model, inputs["style_img"], inputs["content_img"])
         print("[maindb.py] Modle output received...")
 
         return render_template(
@@ -26,7 +26,9 @@ def mainm():
 
 if __name__ == "__main__":
     print("[maindb.py] Running maindb.py now...")
-    # from dask.distributed import Client
-    # client = Client()
-    # print("Dask client started: ", client)
+    global magenta_model
+    magenta_model = Magenta_Model("/mnt/disks/ssd_disk/final/models/",
+                     content_square_crop=False, style_square_crop=False,
+                     style_image_size=256, content_image_size=256)
+
     app.run(host="0.0.0.0", port=8082, debug=True)
