@@ -36,6 +36,8 @@ def magenta_predict(magenta_model, img_content, img_style):
     magenta_model.process_data(style_images_paths=style_images_paths,
                                content_images_paths=content_images_paths)
     outfns = magenta_model.run("/static/imgs/", [0.5, 1.0])
+    outfns = magenta_model.content_img_name, outfns[-1], magenta_model.style_img_name
+
     return outfns
 
 
