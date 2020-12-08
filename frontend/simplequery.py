@@ -33,7 +33,8 @@ def mainm():
             "style_img_fn" : style_img_fn,
             "content_img_fn" : content_img_fn,
             "style_img" : style_img,
-            "content_img" : content_img
+            "content_img" : content_img,
+            "style_weight" : style_weight
         })
         print("[simplequery.py] Response returned...")
 
