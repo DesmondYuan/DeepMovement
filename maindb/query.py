@@ -35,6 +35,13 @@ def magenta_predict(magenta_model, img_content, img_style, weight):
     style_images_paths = [save_img(img2)]
     magenta_model.process_data(style_images_paths=style_images_paths,
                                content_images_paths=content_images_paths)
+
+    print("[query.py] The input weight is {} (type: {}).".format(weight, type(weight)))
+    if type(weight) is str:
+        weight = eval(weight)
+
+    assert 0<=weight<=1
+
     outfns = magenta_model.run("/static/imgs/", [weight])
     outfns = magenta_model.content_img_name, outfns[0], magenta_model.style_img_name
 
