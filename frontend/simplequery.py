@@ -21,6 +21,7 @@ def mainm():
 
         style_img_fn = request.form["style_img_fn"]
         content_img_fn = request.form["content_img_fn"]
+        style_weight = request.form(style_weight)
         print("[simplequery.py] Request texts parsed...")
 
         style_img = get_img_array(request, "style_img")
