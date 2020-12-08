@@ -18,7 +18,6 @@ def mainm():
     print("[simplequery.py] mainm() being called...")
     if request.method == "POST":  # User clicked submit button
         print("[simplequery.py] Request received...")
-        print("[simplequery.py] Request json: ", request.form)
 
         style_img_fn = request.form["style_img_fn"]
         content_img_fn = request.form["content_img_fn"]

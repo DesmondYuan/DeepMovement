@@ -38,6 +38,8 @@ def magenta_predict(magenta_model, img_content, img_style, weight):
 
     print("[query.py] The input weight is {} (type: {}).".format(weight, type(weight)))
     if type(weight) is str:
+        if weight=='':
+            weight=="1.0"
         weight = eval(weight)
 
     assert 0<=weight<=1

@@ -16,12 +16,6 @@ docker network create appNetwork
 # mount a persistent GCP volume
 docker run --name simplequery -d -p 5000:8081 -e DB_HOST=maindb -v /mnt/disks/ssd_disk/final:/static --network appNetwork simplequery
 docker run --name maindb -d -v /mnt/disks/ssd_disk/final:/static  --network appNetwork maindb
-sleep 4 && docker ps -a && docker logs simplequery && docker logs maindb
+sleep 10 && docker ps -a && docker logs simplequery && docker logs maindb
 
 end=$(date +%s)
-
-seconds=$(echo "$end - $start" | bc)
-echo $seconds' sec'
-
-echo 'Formatted:'
-awk -v t=$seconds 'BEGIN{t=int(t*1000); printf "%d:%02d:%02d\n", t/3600000, t/60000%60, t/1000%60}'

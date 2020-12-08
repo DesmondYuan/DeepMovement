@@ -11,7 +11,6 @@ def mainm():
     if request.method == "POST":
         print("[maindb.py] Request received...")
         inputs = request.json
-        print("[maindb.py] Request json: ", inputs)
         outfns = magenta_predict(magenta_model, inputs["style_img"],
                                  inputs["content_img"], inputs["style_weight"])
         print("[maindb.py] Model output received...")
