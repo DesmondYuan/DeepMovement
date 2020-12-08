@@ -27,7 +27,7 @@ def main_predict(img_content, img_style):
     return outfns
 
 
-def magenta_predict(magenta_model, img_content, img_style):
+def magenta_predict(magenta_model, img_content, img_style, weight):
     # placeholder function for Magenta
     img1 = get_pil_array(img_content)
     img2 = get_pil_array(img_style)
@@ -35,8 +35,8 @@ def magenta_predict(magenta_model, img_content, img_style):
     style_images_paths = [save_img(img2)]
     magenta_model.process_data(style_images_paths=style_images_paths,
                                content_images_paths=content_images_paths)
-    outfns = magenta_model.run("/static/imgs/", [0.5, 1.0])
-    outfns = magenta_model.content_img_name, outfns[-1], magenta_model.style_img_name
+    outfns = magenta_model.run("/static/imgs/", [weight])
+    outfns = magenta_model.content_img_name, outfns[0], magenta_model.style_img_name
 
     return outfns
 
