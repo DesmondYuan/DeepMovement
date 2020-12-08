@@ -27,7 +27,7 @@ def mainm():
 if __name__ == "__main__":
     print("[maindb.py] Running maindb.py now...")
     global magenta_model
-    magenta_model = Magenta_Model("/mnt/disks/ssd_disk/final/models/model.ckpt-60000",
+    magenta_model = Magenta_Model("/mnt/disks/ssd_disk/final/models/",
                      content_square_crop=False, style_square_crop=False,
                      style_image_size=256, content_image_size=256)
 
