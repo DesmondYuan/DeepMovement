@@ -43,7 +43,7 @@ def magenta_predict(magenta_model, img_content, img_style, weight):
     assert 0<=weight<=1
 
     outfns = magenta_model.run("/static/imgs/", [weight])
-    outfns = magenta_model.content_img_name, outfns[0], magenta_model.style_img_name
+    outfns = content_images_paths[0], outfns[0], style_images_paths[0]
 
     return outfns
 
