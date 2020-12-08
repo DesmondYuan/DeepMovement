@@ -35,7 +35,7 @@ def magenta_predict(magenta_model, img_content, img_style):
     style_images_paths = [save_img(img2)]
     magenta_model.process_data(style_images_paths=style_images_paths,
                                content_images_paths=content_images_paths)
-    outfns = magenta_model.run("/mnt/disks/ssd_disk/final/tmp/", [0.5, 1.0])
+    outfns = magenta_model.run("/static/imgs/", [0.5, 1.0])
     return outfns
 
 
@@ -92,6 +92,7 @@ class Magenta_Model():
             adds_losses=False)
 
         checkpoint = tf.train.latest_checkpoint(checkpoint)
+        print("[query.py] Loading checkpoint from ", checkpoint)
         init_fn = slim.assign_from_checkpoint_fn(checkpoint, slim.get_variables_to_restore())
         sess.run([tf.local_variables_initializer()])
         init_fn(sess)
