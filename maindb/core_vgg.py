@@ -19,9 +19,10 @@ class Feature_Model():
         image = tf.image.decode_jpeg(image, channels=3)
         image = tf.image.resize(image, [1024, 1024])
         image = tf.expand_dims(image, 0)
-        feature = mobilenet(image)[0, 0]
+        feature = mobilenet(image)[0, 0, 0]
         sess = tf.Session()
         init = tf.global_variables_initializer()
+        sess.run(init)
         self.sess = sess
         self.feature = feature
         self.path_in = path
