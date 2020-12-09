@@ -21,7 +21,7 @@ def mainm():
 
         return render_template(
             "display.html",
-            style_img=style_img
+            style_img=style_img,
             content_img=content_img,
             output_img=output_img,
             nearest_img=nearest_img,
