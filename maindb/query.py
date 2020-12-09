@@ -46,7 +46,7 @@ def magenta_predict(magenta_model, img_content, img_style, weight):
 
 def feature_predict(feature_model, img):
     current = feature_model(img)
-    fns = feature_table.index
+    fns = list(feature_table.index)
     best_score = 1e10
     best_match = "No match found"
     for fn_iter in fns:
