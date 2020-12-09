@@ -24,7 +24,7 @@ def mainm():
             style_img=style_img,
             content_img=content_img,
             output_img=output_img,
-            nearest_img=nearest_img,
+            nearest_img="/static/data/wikiart/"+nearest_img,
             metadata=[meta.to_html(classes="data")]
         )
     else:
