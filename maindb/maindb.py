@@ -21,9 +21,9 @@ def mainm():
 
         return render_template(
             "display.html",
-            style_img=outfns[0],
-            content_img=outfns[1],
-            output_img=outfns[2],
+            style_img=style_img
+            content_img=content_img,
+            output_img=output_img,
             nearest_img=nearest_img,
             metadata=[meta.to_html(classes="data")]
         )
