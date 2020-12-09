@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
     <title> DeepMovement - The New Normal </title>
+    <style>
+    .tab {
+            display: inline-block;
+            margin-left: 40px;
+        }
+    </style>
 </head>
+
 
 <body>
     <h1>DeepMovement - AC295</h1>
@@ -44,20 +52,23 @@
     <br><br><br>
 
     <h3>The most similar piece of art is. </h3>
-    <table border="1" >
-        <tr><th> {{nearest_img}} </th></tr>
-        <tr>
-            <td style="width:250px; height:250px; background-color:rgba(146, 147, 151, 0.24);text-align:center;
-                vertical-align:middle">
-                <img src="{{url_for('static', filename=nearest_img)}}" style="max-height:100%; max-width:100%" />
-        </tr>
+    <table>
+        <td> <table border="1" >
+            <tr><th> {{nearest_img}} </th></tr>
+            <tr>
+                <td style="width:250px; height:250px; background-color:rgba(146, 147, 151, 0.24);text-align:center;
+                    vertical-align:middle">
+                    <img src={{nearest_img}} style="max-height:100%; max-width:100%" />
+            </tr>
+            </table>
+        </td>
+        <td><span class="tab"></span></td>
+        <td>
+            {% for table in metadata %}
+                {{ table|safe }}
+            {% endfor %}
+        </td>
     </table>
-
-    <br><br>
-    {% for table in metadata %}
-        {{ table|safe }}
-    {% endfor %}
-    <br><br>
 
     <br>Developed by team The New Normal.
     <br>Debbie Liske, Bo Yuan, Fahd Jadoon. <br>
