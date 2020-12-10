@@ -12,7 +12,7 @@ import pandas as pd
 
 path = "/static/imgs/"
 global feature_table
-feature_table = pd.read_csv("/static/feature_table.csv", index_col=0)
+feature_table = pd.read_csv("/static/feature_table_full.csv", index_col=0)
 meta = pd.read_csv("/static/metadata.csv", index_col=0).fillna("Unknown")
 
 
